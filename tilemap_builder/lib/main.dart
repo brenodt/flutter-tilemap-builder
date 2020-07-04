@@ -21,7 +21,6 @@ class Home extends StatelessWidget {
       body: Row(
         children: <Widget>[
           Expanded(child: TileMap()),
-          // TileMap(),
           Inspector(),
         ],
       ),
