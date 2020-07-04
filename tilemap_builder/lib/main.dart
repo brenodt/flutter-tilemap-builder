@@ -18,9 +18,12 @@ class Home extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(
-        TileMap(),
-        Inspector(),
+      body: Row(
+        children: <Widget>[
+          Expanded(child: TileMap()),
+          // TileMap(),
+          Inspector(),
+        ],
       ),
     );
   }

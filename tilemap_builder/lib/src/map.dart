@@ -8,6 +8,8 @@ class TileMap extends StatefulWidget {
 class _TileMapState extends State<TileMap> {
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return Container(
+      color: Colors.blueAccent,
+    );
   }
 }
