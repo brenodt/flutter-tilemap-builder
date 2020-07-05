@@ -18,9 +18,10 @@ class Inspector extends StatelessWidget {
             Expanded(child: Container()),
             Row(
               children: <Widget>[
+                // TODO(brenodt): Remove button duplicity.
                 Expanded(
                   child: RaisedButton(
-                    onPressed: () {},
+                    onPressed: () => _createMapDialog(context),
                     elevation: 0.0,
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(18.0),
@@ -47,6 +48,46 @@ class Inspector extends StatelessWidget {
             Expanded(child: Container()),
           ],
         ),
+      ),
+    );
+  }
+
+  void _createMapDialog(BuildContext context) {
+    showDialog<AlertDialog>(
+      context: context,
+      barrierColor: Colors.black87,
+      builder: (_) => AlertDialog(
+        title: const Text(
+          'Create map with size:',
+        ),
+        content: Column(
+          children: <Widget>[
+            // TODO(brenodt): Remove text field duplicity.
+            // TODO(brenodt): Not permit field to receive non-numeric.
+            TextField(
+              controller: TextEditingController(),
+              decoration: const InputDecoration(
+                labelText: 'Width:',
+                floatingLabelBehavior: FloatingLabelBehavior.never,
+              ),
+            ),
+            TextField(
+              controller: TextEditingController(),
+              decoration: const InputDecoration(
+                labelText: 'Width:',
+                floatingLabelBehavior: FloatingLabelBehavior.never,
+              ),
+            ),
+          ],
+        ),
+        actions: <Widget>[
+          // TODO(brenodt): Link Function
+          FlatButton(child: const Text('Create'), onPressed: () {}),
+          FlatButton(
+            child: const Text('Cancel'),
+            onPressed: () => Navigator.pop(context),
+          ),
+        ],
       ),
     );
   }
