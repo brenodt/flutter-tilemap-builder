@@ -9,7 +9,7 @@ class _TileMapState extends State<TileMap> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: Colors.blueAccent,
+      color: Colors.black87,
       child: Stack(
         alignment: Alignment.bottomCenter,
         children: <Widget>[

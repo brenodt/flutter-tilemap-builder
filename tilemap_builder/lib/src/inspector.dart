@@ -6,7 +6,7 @@ class Inspector extends StatelessWidget {
     final double _screenWidth = MediaQuery.of(context).size.width;
     return Container(
       width: _screenWidth * 0.3,
-      color: Colors.purple,
+      color: Colors.black26,
       child: Padding(
         padding: const EdgeInsets.all(8.0),
         child: Column(
