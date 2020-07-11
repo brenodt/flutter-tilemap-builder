@@ -21,7 +21,7 @@ class _TileMapState extends State<TileMap> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: const <Widget>[
-                  // TODO(brenodt): Link UI with functions to manipulate map.
+                  // TODO(brenodt): Link UI with functions to manipulate map. https://github.com/brenodt/flutter-tilemap-builder/issues/8
                   CircularButton(
                     onTap: null,
                     size: 30.0,

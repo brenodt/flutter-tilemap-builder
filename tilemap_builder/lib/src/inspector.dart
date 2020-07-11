@@ -18,7 +18,7 @@ class Inspector extends StatelessWidget {
             Expanded(child: Container()),
             Row(
               children: <Widget>[
-                // TODO(brenodt): Remove button duplicity.
+                // TODO(brenodt): Remove button duplicity. https://github.com/brenodt/flutter-tilemap-builder/issues/7
                 Expanded(
                   child: RaisedButton(
                     onPressed: () => _createMapDialog(context),
@@ -61,9 +61,10 @@ class Inspector extends StatelessWidget {
           'Create map with size:',
         ),
         content: Column(
+          mainAxisSize: MainAxisSize.min,
           children: <Widget>[
-            // TODO(brenodt): Remove text field duplicity.
-            // TODO(brenodt): Not permit field to receive non-numeric.
+            // TODO(brenodt): Remove text field duplicity. https://github.com/brenodt/flutter-tilemap-builder/issues/4
+            // TODO(brenodt): Not permit field to receive non-numeric. https://github.com/brenodt/flutter-tilemap-builder/issues/5
             TextField(
               controller: TextEditingController(),
               decoration: const InputDecoration(
@@ -81,7 +82,7 @@ class Inspector extends StatelessWidget {
           ],
         ),
         actions: <Widget>[
-          // TODO(brenodt): Link Function
+          // TODO(brenodt): Link Function. https://github.com/brenodt/flutter-tilemap-builder/issues/6
           FlatButton(child: const Text('Create'), onPressed: () {}),
           FlatButton(
             child: const Text('Cancel'),
