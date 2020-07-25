@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 class Inspector extends StatelessWidget {
   @override
@@ -54,41 +55,62 @@ class Inspector extends StatelessWidget {
 
   void _createMapDialog(BuildContext context) {
     showDialog<AlertDialog>(
-      context: context,
-      barrierColor: Colors.black87,
-      builder: (_) => AlertDialog(
-        title: const Text(
-          'Create map with size:',
-        ),
-        content: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: <Widget>[
-            // TODO(brenodt): Remove text field duplicity. https://github.com/brenodt/flutter-tilemap-builder/issues/4
-            // TODO(brenodt): Not permit field to receive non-numeric. https://github.com/brenodt/flutter-tilemap-builder/issues/5
-            TextField(
-              controller: TextEditingController(),
-              decoration: const InputDecoration(
-                labelText: 'Width:',
-                floatingLabelBehavior: FloatingLabelBehavior.never,
-              ),
-            ),
-            TextField(
-              controller: TextEditingController(),
-              decoration: const InputDecoration(
-                labelText: 'Width:',
-                floatingLabelBehavior: FloatingLabelBehavior.never,
-              ),
-            ),
-          ],
-        ),
-        actions: <Widget>[
-          // TODO(brenodt): Link Function. https://github.com/brenodt/flutter-tilemap-builder/issues/6
-          FlatButton(child: const Text('Create'), onPressed: () {}),
-          FlatButton(
-            child: const Text('Cancel'),
-            onPressed: () => Navigator.pop(context),
-          ),
+        context: context,
+        barrierColor: Colors.black87,
+        builder: (_) => _MapCreationDialog());
+  }
+}
+
+class _MapCreationDialog extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return AlertDialog(
+      title: const Text(
+        'Create map with size:',
+      ),
+      content: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: <Widget>[
+          // TODO(brenodt): Remove text field duplicity. https://github.com/brenodt/flutter-tilemap-builder/issues/4
+          // TODO(brenodt): Not permit field to receive non-numeric. https://github.com/brenodt/flutter-tilemap-builder/issues/5
+          _DialogNumericField(label: 'Width:'),
+          _DialogNumericField(label: 'Height:'),
         ],
+      ),
+      actions: <Widget>[
+        // TODO(brenodt): Link Function. https://github.com/brenodt/flutter-tilemap-builder/issues/6
+        FlatButton(child: const Text('Create'), onPressed: () {}),
+        FlatButton(
+          child: const Text('Cancel'),
+          onPressed: () => Navigator.pop(context),
+        ),
+      ],
+    );
+  }
+}
+
+class _DialogNumericField extends StatefulWidget {
+  const _DialogNumericField({
+    @required this.label,
+    this.controller,
+    Key key,
+  }) : super(key: key);
+  final String label;
+  final TextEditingController controller;
+
+  @override
+  __DialogNumericFieldState createState() => __DialogNumericFieldState();
+}
+
+class __DialogNumericFieldState extends State<_DialogNumericField> {
+  @override
+  Widget build(BuildContext context) {
+    return TextField(
+      controller: widget.controller,
+      inputFormatters: [WhitelistingTextInputFormatter.digitsOnly],
+      decoration: InputDecoration(
+        labelText: widget.label,
+        floatingLabelBehavior: FloatingLabelBehavior.always,
       ),
     );
   }
